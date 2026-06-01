@@ -498,25 +498,47 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
   <p class="lede" style="margin-top:2rem; text-align:center; max-width:42ch">Anything you're sitting on. The harder, the better.<br><em>This is the room.</em></p>
 </section>
 
-<!-- 10. LAST CALL — $700 off / June cohort / no fall 2027 -->
-<section class="slide center theme-ink">
+<!-- 10. LAST CALL — strikethrough + 3 payment options + QR -->
+<section class="slide theme-ink" style="padding:4vh 5vw">
   <div class="accent-strip left" style="background:var(--gold)"></div>
   <div class="accent-strip right" style="background:var(--rose)"></div>
-  <p class="kicker" style="color:var(--gold)">Last call · Tonight only</p>
-  <h2 class="section" style="margin-top:1rem; max-width:24ch">Final night to lock in <em style="color:var(--gold)">$700 off</em>.</h2>
-  <p class="lede" style="margin-top:2.5rem; text-align:center; max-width:48ch">Our <em style="color:var(--gold)">June cohort</em> kicks off next week.<br>After this — we are <em style="color:var(--gold)">not running another cohort</em> until <em style="color:var(--gold)">2027</em>.</p>
-  <div style="margin-top:3rem; display:flex; gap:3rem; justify-content:center; align-items:baseline; padding-bottom:0.5rem; border-bottom:1px solid rgba(200,154,74,0.3); padding-bottom:1.5rem">
-    <div style="text-align:center">
-      <div style="font-family:'Inter',sans-serif; font-size:0.78rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,250,242,0.7); font-weight:600">Pay in Full</div>
-      <div style="font-family:'Fraunces',serif; font-size:3.2rem; font-weight:300; color:var(--paper); margin-top:0.4rem">$997</div>
+  <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap:4rem; align-items:center; height:100%">
+    <div>
+      <p class="kicker" style="color:var(--gold)">Last call · Tonight only</p>
+      <h2 class="section" style="margin-top:1rem; font-size:clamp(2.4rem, 4vw, 4rem); max-width:18ch">Final night to lock in <em style="color:var(--gold)">$700 off</em>.</h2>
+      <p class="lede" style="margin-top:1.5rem; max-width:42ch; font-size:1.4rem">June cohort kicks off next week. After this — <em style="color:var(--gold)">no other cohort until 2027</em>.</p>
+
+      <div style="margin-top:2.2rem; display:flex; align-items:baseline; gap:1.5rem">
+        <span style="font-family:'Fraunces',serif; font-size:2rem; color:rgba(255,250,242,0.5); text-decoration:line-through; font-weight:300">$1,697</span>
+        <span style="font-family:'Fraunces',serif; font-size:4.5rem; font-weight:400; color:var(--gold); line-height:1">$997</span>
+        <span style="font-family:'Inter',sans-serif; font-size:0.75rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); font-weight:700; opacity:0.85">Tonight</span>
+      </div>
+
+      <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(200,154,74,0.25); display:flex; gap:2.5rem">
+        <div>
+          <div style="font-family:'Inter',sans-serif; font-size:0.72rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,250,242,0.6); font-weight:700">Pay in Full</div>
+          <div style="font-family:'Fraunces',serif; font-size:2rem; font-weight:300; color:var(--paper); margin-top:0.2rem">$997</div>
+        </div>
+        <div>
+          <div style="font-family:'Inter',sans-serif; font-size:0.72rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,250,242,0.6); font-weight:700">6-Month Plan</div>
+          <div style="font-family:'Fraunces',serif; font-size:2rem; font-weight:300; color:var(--paper); margin-top:0.2rem">6 × $198</div>
+        </div>
+        <div>
+          <div style="font-family:'Inter',sans-serif; font-size:0.72rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,250,242,0.6); font-weight:700">12-Month Plan</div>
+          <div style="font-family:'Fraunces',serif; font-size:2rem; font-weight:300; color:var(--paper); margin-top:0.2rem">12 × $99</div>
+        </div>
+      </div>
+
+      <p style="margin-top:2rem; font-family:'Fraunces',serif; font-weight:400; font-size:clamp(1.6rem, 2.2vw, 2.2rem); color:var(--gold); letter-spacing:-0.01em; font-style:italic">schoolofdatingoffer.com</p>
     </div>
-    <div style="font-family:'Fraunces',serif; font-style:italic; color:rgba(255,250,242,0.4); font-size:1.6rem; align-self:center">or</div>
+
     <div style="text-align:center">
-      <div style="font-family:'Inter',sans-serif; font-size:0.78rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,250,242,0.7); font-weight:600">Payment Plan</div>
-      <div style="font-family:'Fraunces',serif; font-size:3.2rem; font-weight:300; color:var(--paper); margin-top:0.4rem">6 × $198</div>
+      <div style="background:var(--paper); padding:1.5rem; border-radius:8px; box-shadow:0 20px 50px -15px rgba(0,0,0,0.5); display:inline-block">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=0&data=https%3A%2F%2Fschoolofdatingoffer.com" alt="Scan to enroll at schoolofdatingoffer.com" style="display:block; width:320px; height:320px">
+      </div>
+      <p style="margin-top:1.2rem; font-family:'Inter',sans-serif; font-size:0.82rem; letter-spacing:0.32em; text-transform:uppercase; color:var(--gold); font-weight:700">Scan to enroll</p>
     </div>
   </div>
-  <p style="margin-top:2.5rem; font-family:'Fraunces',serif; font-weight:400; font-size:clamp(2.2rem, 3vw, 3rem); color:var(--gold); letter-spacing:-0.01em; text-align:center; font-style:italic">schoolofdatingoffer.com</p>
 </section>
 
 </div>
