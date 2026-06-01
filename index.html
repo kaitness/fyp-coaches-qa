@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1600, initial-scale=1">
+<title>FYP Bonus Night — Meet the Coaches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf6f0;
+  --ink: #1d1815;
+  --ink-soft: #4a3f37;
+  --muted: #8a7e72;
+  --line: #e8dfd2;
+  --gold: #c89a4a;
+  --gold-deep: #8a6627;
+  --rose: #c47a6e;
+  --rose-deep: #9d5a4f;
+  --rose-soft: #f4dcd6;
+  --sage: #6e8071;
+  --sage-deep: #4f6256;
+  --sage-soft: #d9e2dc;
+  --blue: #6c84a3;
+  --blue-deep: #4a5f7a;
+  --blue-soft: #d4dde6;
+  --mustard: #d4a73c;
+  --terra: #b86c5c;
+  --cream: #f3ebdc;
+  --paper: #fffaf2;
+  --shadow: 0 30px 80px -30px rgba(40,28,18,.25);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--ink); color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  overflow: hidden;
+}
+.deck { position: relative; width: 100vw; height: 100vh; }
+.slide {
+  position: absolute; inset: 0;
+  display: none; padding: 5vh 7vw;
+  flex-direction: column; justify-content: center;
+  opacity: 0; transition: opacity .35s ease;
+  background: var(--bg);
+}
+.slide.active { display: flex; opacity: 1; }
+
+.nav-arrow {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(29,24,21,0.4); color: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 100;
+  font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 300;
+  border: none; transition: all 0.2s ease; user-select: none;
+}
+.nav-arrow:hover { background: rgba(29,24,21,0.7); }
+.nav-arrow.prev { left: 30px; }
+.nav-arrow.next { right: 30px; }
+.nav-arrow:disabled { opacity: 0.15; cursor: default; }
+
+.slide-counter {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+  font-family: 'Inter', sans-serif; font-size: 0.75rem;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; opacity: 0.5; z-index: 100;
+}
+
+/* themes */
+.slide.theme-cream { background: var(--cream); }
+.slide.theme-rose-soft { background: var(--rose-soft); }
+.slide.theme-paper { background: var(--paper); }
+.slide.theme-ink { background: var(--ink); color: var(--paper); }
+.slide.theme-sage-soft { background: var(--sage-soft); }
+.slide.theme-sage-deep { background: var(--sage-deep); color: var(--paper); }
+.slide.theme-blue-soft { background: var(--blue-soft); }
+.slide.theme-blue-deep { background: var(--blue-deep); color: var(--paper); }
+
+.slide::after {
+  content: 'COACH Q&A · FYP';
+  position: absolute; bottom: 28px; right: 50px;
+  font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--muted); font-weight: 600; opacity: 0.4;
+}
+.theme-ink::after, .theme-sage-deep::after, .theme-blue-deep::after { color: var(--paper); opacity: 0.35; }
+
+.accent-strip { position: absolute; top: 0; bottom: 0; width: 12px; }
+.accent-strip.left { left: 0; }
+.accent-strip.right { right: 0; }
+
+/* typography (same system as N4) */
+.eyebrow {
+  font-size: 0.9rem; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold-deep);
+  font-weight: 600; margin-bottom: 1.5rem;
+}
+.eyebrow .dot {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--gold); border-radius: 50%;
+  margin: 0 .8em; vertical-align: middle;
+}
+.theme-ink .eyebrow, .theme-sage-deep .eyebrow, .theme-blue-deep .eyebrow { color: var(--gold); }
+
+h1.title {
+  font-family: 'Fraunces', serif; font-weight: 300;
+  font-size: clamp(4rem, 7vw, 7rem); line-height: 0.95; letter-spacing: -0.025em;
+}
+h1.title em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
+.theme-ink h1.title em { color: var(--gold); }
+
+h2.section {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: clamp(2.8rem, 5vw, 5rem); line-height: 1.0; letter-spacing: -0.02em;
+}
+h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
+.theme-ink h2.section em, .theme-sage-deep h2.section em, .theme-blue-deep h2.section em { color: var(--gold); }
+
+.lede {
+  font-family: 'Fraunces', serif; font-size: clamp(1.4rem, 1.85vw, 1.95rem);
+  line-height: 1.4; font-weight: 300; color: var(--ink-soft); max-width: 44ch;
+}
+.lede em { color: var(--gold-deep); font-style: italic; }
+.theme-ink .lede, .theme-sage-deep .lede, .theme-blue-deep .lede { color: rgba(255,250,242,0.92); }
+
+.kicker {
+  font-size: clamp(0.85rem, 1vw, 1.05rem); letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); font-weight: 500;
+}
+.theme-ink .kicker, .theme-sage-deep .kicker, .theme-blue-deep .kicker { color: rgba(255,250,242,0.7); }
+
+.center { text-align: center; align-items: center; }
+.center .lede { margin: 0 auto; }
+
+/* TITLE OPENER */
+.title-card { text-align: center; }
+.title-card .signoff {
+  font-family: 'Inter', sans-serif; font-size: 1rem; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-top: 4rem;
+}
+.title-deco { width: 80px; height: 6px; background: var(--gold); margin: 0 auto 2.5rem; }
+
+/* HOW TONIGHT WORKS */
+.how-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
+  margin-top: 3rem;
+}
+.how-card {
+  padding: 2.5rem 2rem; border-radius: 6px; text-align: left;
+  background: var(--paper); border-left: 4px solid var(--gold);
+}
+.how-card .how-num {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+  font-size: 3.5rem; line-height: 1; color: var(--gold-deep);
+}
+.how-card .how-h {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: 1.6rem; line-height: 1.2; margin-top: 0.8rem; color: var(--ink);
+}
+.how-card .how-body {
+  font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.5;
+  margin-top: 0.8rem; color: var(--ink-soft);
+}
+
+/* COACH SLIDE */
+.coach-layout {
+  display: grid; grid-template-columns: 0.85fr 1.15fr;
+  gap: 4rem; align-items: center; height: 100%; max-width: 1500px;
+  margin: 0 auto;
+}
+.coach-portrait {
+  width: 100%; aspect-ratio: 4/5; border-radius: 8px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 20px 60px -20px rgba(40,28,18,0.35);
+}
+.coach-portrait img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.coach-portrait .initial-fallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+  font-size: 12rem; line-height: 1; letter-spacing: -0.04em;
+}
+.coach-portrait .number-tag {
+  position: absolute; top: 24px; left: 24px;
+  background: var(--ink); color: var(--gold);
+  font-family: 'Inter', sans-serif; font-size: 0.75rem;
+  letter-spacing: 0.28em; padding: 6px 14px; border-radius: 30px;
+  font-weight: 700; z-index: 2;
+}
+
+.coach-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.coach-eyebrow {
+  font-family: 'Inter', sans-serif; font-size: 0.85rem;
+  letter-spacing: 0.32em; text-transform: uppercase; font-weight: 700;
+}
+.coach-name {
+  font-family: 'Fraunces', serif; font-weight: 300;
+  font-size: clamp(3.5rem, 5.5vw, 5.5rem); line-height: 0.95;
+  letter-spacing: -0.03em; color: var(--ink); margin-top: -0.5rem;
+}
+.theme-ink .coach-name, .theme-sage-deep .coach-name, .theme-blue-deep .coach-name { color: var(--paper); }
+.coach-name em { font-style: italic; font-weight: 400; }
+
+.coach-role {
+  font-family: 'Inter', sans-serif; font-size: 0.9rem;
+  letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600;
+  color: var(--muted);
+}
+.theme-ink .coach-role, .theme-sage-deep .coach-role, .theme-blue-deep .coach-role { color: rgba(255,250,242,0.6); }
+
+.specialty-label {
+  font-family: 'Inter', sans-serif; font-size: 0.75rem;
+  letter-spacing: 0.3em; text-transform: uppercase; font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.specialty-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.6rem;
+}
+.specialty-item {
+  font-family: 'Fraunces', serif; font-weight: 300;
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem); line-height: 1.3;
+  padding: 0.6rem 1.1rem; border-radius: 4px;
+  display: flex; align-items: baseline; gap: 0.8rem;
+}
+.specialty-item .bullet {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+  font-size: 1.4rem; opacity: 0.6; flex-shrink: 0;
+}
+.specialty-item em { font-style: italic; font-weight: 400; }
+
+/* coach color themes — applied per slide */
+.coach.c-gold .specialty-item { background: var(--cream); color: var(--ink); border-left: 3px solid var(--gold); }
+.coach.c-gold .specialty-item em { color: var(--gold-deep); }
+.coach.c-gold .specialty-item .bullet { color: var(--gold-deep); }
+.coach.c-gold .coach-eyebrow { color: var(--gold-deep); }
+.coach.c-gold .coach-name em { color: var(--gold-deep); }
+.coach.c-gold .specialty-label { color: var(--gold-deep); }
+
+.coach.c-rose .specialty-item { background: var(--rose-soft); color: var(--ink); border-left: 3px solid var(--rose); }
+.coach.c-rose .specialty-item em { color: var(--rose-deep); }
+.coach.c-rose .specialty-item .bullet { color: var(--rose-deep); }
+.coach.c-rose .coach-eyebrow { color: var(--rose-deep); }
+.coach.c-rose .coach-name em { color: var(--rose-deep); }
+.coach.c-rose .specialty-label { color: var(--rose-deep); }
+
+.coach.c-sage .specialty-item { background: var(--sage-soft); color: var(--ink); border-left: 3px solid var(--sage); }
+.coach.c-sage .specialty-item em { color: var(--sage-deep); }
+.coach.c-sage .specialty-item .bullet { color: var(--sage-deep); }
+.coach.c-sage .coach-eyebrow { color: var(--sage-deep); }
+.coach.c-sage .coach-name em { color: var(--sage-deep); }
+.coach.c-sage .specialty-label { color: var(--sage-deep); }
+
+.coach.c-blue .specialty-item { background: var(--blue-soft); color: var(--ink); border-left: 3px solid var(--blue); }
+.coach.c-blue .specialty-item em { color: var(--blue-deep); }
+.coach.c-blue .specialty-item .bullet { color: var(--blue-deep); }
+.coach.c-blue .coach-eyebrow { color: var(--blue-deep); }
+.coach.c-blue .coach-name em { color: var(--blue-deep); }
+.coach.c-blue .specialty-label { color: var(--blue-deep); }
+
+.coach.c-ink .specialty-item { background: rgba(255,250,242,0.08); color: var(--paper); border-left: 3px solid var(--gold); }
+.coach.c-ink .specialty-item em { color: var(--gold); }
+.coach.c-ink .specialty-item .bullet { color: var(--gold); }
+.coach.c-ink .coach-eyebrow { color: var(--gold); }
+.coach.c-ink .coach-name em { color: var(--gold); }
+.coach.c-ink .specialty-label { color: var(--gold); }
+
+/* initial fallback colors */
+.initial-fallback.bg-rose { background: var(--rose-soft); color: var(--rose-deep); }
+.initial-fallback.bg-sage { background: var(--sage-soft); color: var(--sage-deep); }
+.initial-fallback.bg-blue { background: var(--blue-soft); color: var(--blue-deep); }
+.initial-fallback.bg-gold { background: var(--cream); color: var(--gold-deep); }
+
+/* CLOSING / CTA */
+.cta-card {
+  background: var(--paper); border: 3px solid var(--gold); border-radius: 8px;
+  padding: 4rem 3.5rem; max-width: 1100px; margin: 0 auto;
+  position: relative; text-align: center;
+}
+.cta-card::before {
+  content: 'YOUR TURN'; position: absolute; top: -15px; left: 50%;
+  transform: translateX(-50%); background: var(--bg); padding: 0 1.5rem;
+  font-family: 'Inter', sans-serif; font-size: 0.85rem; letter-spacing: 0.32em;
+  color: var(--gold-deep); font-weight: 700;
+}
+.cta-text {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+  font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.3; color: var(--ink);
+}
+.cta-text em { font-style: normal; font-weight: 400; color: var(--rose-deep); }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- 1. Title -->
+<section class="slide active center title-card theme-cream">
+  <div class="accent-strip left" style="background:var(--gold)"></div>
+  <div class="accent-strip right" style="background:var(--rose)"></div>
+  <div class="title-deco"></div>
+  <p class="kicker" style="color:var(--gold-deep)">FYP · Bonus Night · Coaches Q&amp;A</p>
+  <h1 class="title" style="margin-top:1.5rem">Meet the people<br>who will <em>walk with you</em>.</h1>
+  <p class="signoff">The SOD Coaching Team</p>
+</section>
+
+<!-- 2. How tonight works -->
+<section class="slide">
+  <p class="eyebrow">How tonight works</p>
+  <h2 class="section">Q&amp;A with <em>real coaches</em>.</h2>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-h">Meet 6 SOD coaches.</div>
+      <div class="how-body">Each one walks alongside students inside SOD. Tonight, they're here for you.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-h">Drop your questions.</div>
+      <div class="how-body">Anything you're navigating in dating right now — anxiety, online apps, situationships, faith, second chapters.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-h">Get real answers.</div>
+      <div class="how-body">No theory. No fluff. The same wisdom SOD students get every week — for free, tonight.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Jayme Vainer -->
+<section class="slide theme-cream">
+  <div class="coach-layout coach c-gold">
+    <div class="coach-portrait">
+      <span class="number-tag">01 · COACH</span>
+      <img src="photos/jayme.jpg" alt="Jayme Vainer">
+    </div>
+    <div class="coach-info">
+      <p class="coach-eyebrow">Meet</p>
+      <h2 class="coach-name">Jayme <em>Vainer</em>.</h2>
+      <p class="coach-role">SOD Coach</p>
+      <div>
+        <p class="specialty-label">Specialties</p>
+        <ul class="specialty-list">
+          <li class="specialty-item"><span class="bullet">·</span>Dating <em>multiple people</em> with clarity</li>
+          <li class="specialty-item"><span class="bullet">·</span>Online dating without burnout</li>
+          <li class="specialty-item"><span class="bullet">·</span>Navigating <em>anxious attachment</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Dating as an <em>older single</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Feminine energy + body image</li>
+          <li class="specialty-item"><span class="bullet">·</span>Age gap dating</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Michael Pham — INK theme for drama -->
+<section class="slide theme-ink">
+  <div class="coach-layout coach c-ink">
+    <div class="coach-portrait">
+      <span class="number-tag">02 · COACH</span>
+      <img src="photos/michael.jpg" alt="Michael Pham">
+    </div>
+    <div class="coach-info">
+      <p class="coach-eyebrow">Meet</p>
+      <h2 class="coach-name">Michael <em>Pham</em>.</h2>
+      <p class="coach-role">SOD Coach</p>
+      <div>
+        <p class="specialty-label">Specialties</p>
+        <ul class="specialty-list">
+          <li class="specialty-item"><span class="bullet">·</span>Shifting from <em>high-stakes</em> to <em>enjoying</em> dating</li>
+          <li class="specialty-item"><span class="bullet">·</span>Building a <em>godly identity</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Healing past pain + emotional / physical connectedness</li>
+          <li class="specialty-item"><span class="bullet">·</span>Persevering through dating fatigue</li>
+          <li class="specialty-item"><span class="bullet">·</span>Long distance dating</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Alana Gibson — SAGE theme -->
+<section class="slide theme-sage-soft">
+  <div class="coach-layout coach c-sage">
+    <div class="coach-portrait">
+      <span class="number-tag">03 · COACH</span>
+      <div class="initial-fallback bg-sage">A</div>
+    </div>
+    <div class="coach-info">
+      <p class="coach-eyebrow">Meet</p>
+      <h2 class="coach-name">Alana <em>Gibson</em>.</h2>
+      <p class="coach-role">SOD Coach · Director of Growth</p>
+      <div>
+        <p class="specialty-label">Specialties</p>
+        <ul class="specialty-list">
+          <li class="specialty-item"><span class="bullet">·</span><em>Godfidence</em> + feminine energy</li>
+          <li class="specialty-item"><span class="bullet">·</span>Dating the <em>unexpected</em></li>
+          <li class="specialty-item"><span class="bullet">·</span><em>Extreme</em> long distance</li>
+          <li class="specialty-item"><span class="bullet">·</span>Navigating <em>ambivalent</em> attachment</li>
+          <li class="specialty-item"><span class="bullet">·</span>Healthy communication</li>
+          <li class="specialty-item"><span class="bullet">·</span>Emotional regulation in dating</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Jeremy Fisher — BLUE theme -->
+<section class="slide theme-blue-soft">
+  <div class="coach-layout coach c-blue">
+    <div class="coach-portrait">
+      <span class="number-tag">04 · COACH</span>
+      <div class="initial-fallback bg-blue">J</div>
+    </div>
+    <div class="coach-info">
+      <p class="coach-eyebrow">Meet</p>
+      <h2 class="coach-name">Jeremy <em>Fisher</em>.</h2>
+      <p class="coach-role">SOD Coach · June 2025 Alum</p>
+      <div>
+        <p class="specialty-label">Specialties</p>
+        <ul class="specialty-list">
+          <li class="specialty-item"><span class="bullet">·</span>Cutting through the <em>noise</em> of conflicting dating advice</li>
+          <li class="specialty-item"><span class="bullet">·</span>Dating with a <em>full plate</em> (career, caregiving, life)</li>
+          <li class="specialty-item"><span class="bullet">·</span>Sounding board for <em>processing-out-loud</em> daters</li>
+          <li class="specialty-item"><span class="bullet">·</span>Building a <em>clear path</em> through overwhelm</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Amie Cortes — ROSE theme -->
+<section class="slide theme-rose-soft">
+  <div class="coach-layout coach c-rose">
+    <div class="coach-portrait">
+      <span class="number-tag">05 · COACH</span>
+      <img src="photos/amie.jpg" alt="Amie Cortes">
+    </div>
+    <div class="coach-info">
+      <p class="coach-eyebrow">Meet</p>
+      <h2 class="coach-name">Amie <em>Cortes</em>.</h2>
+      <p class="coach-role">SOD Coach</p>
+      <div>
+        <p class="specialty-label">Specialties</p>
+        <ul class="specialty-list">
+          <li class="specialty-item"><span class="bullet">·</span>Gaining confidence in <em>who God created you to be</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Releasing the <em>pressure to be all in</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Online dating profiles + first-date readiness</li>
+          <li class="specialty-item"><span class="bullet">·</span>Dating with <em>chronic illness</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Believing dating is <em>still possible</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Amanda Sheridan — GOLD/CREAM theme -->
+<section class="slide theme-cream">
+  <div class="coach-layout coach c-gold">
+    <div class="coach-portrait">
+      <span class="number-tag">06 · COACH</span>
+      <img src="photos/amanda.jpg" alt="Amanda Sheridan">
+    </div>
+    <div class="coach-info">
+      <p class="coach-eyebrow">Meet</p>
+      <h2 class="coach-name">Amanda <em>Sheridan</em>.</h2>
+      <p class="coach-role">SOD Coach · March 2023 Alum</p>
+      <div>
+        <p class="specialty-label">Specialties</p>
+        <ul class="specialty-list">
+          <li class="specialty-item"><span class="bullet">·</span>Challenging your <em>type</em> + dating the unexpected</li>
+          <li class="specialty-item"><span class="bullet">·</span>Taking the <em>pressure off</em> Date #1</li>
+          <li class="specialty-item"><span class="bullet">·</span>The Dating Challenge — moving <em>apps to real life</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Navigating dating <em>multiple people</em></li>
+          <li class="specialty-item"><span class="bullet">·</span>Anxious attachment + how it shapes attraction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Closing CTA -->
+<section class="slide center theme-cream">
+  <p class="kicker" style="color:var(--rose-deep)">Your turn</p>
+  <h2 class="section" style="margin-top:1rem; max-width:22ch">Drop your <em>questions</em> in the chat.</h2>
+  <p class="lede" style="margin-top:2rem; text-align:center; max-width:42ch">Anything you're sitting on. The harder, the better.<br><em>This is the room.</em></p>
+  <div class="cta-card" style="margin-top:3rem">
+    <p class="cta-text">Every single person on this call gets a coach<br>when they join <em>School of Dating</em>.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav-arrow prev" id="prevBtn" onclick="prev()">‹</button>
+<button class="nav-arrow next" id="nextBtn" onclick="next()">›</button>
+<div class="slide-counter" id="counter">1 · 9</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const counter = document.getElementById('counter');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+let current = 0;
+
+function show(n) {
+  slides[current].classList.remove('active');
+  current = Math.max(0, Math.min(slides.length - 1, n));
+  slides[current].classList.add('active');
+  counter.textContent = `${current + 1} · ${slides.length}`;
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === slides.length - 1;
+}
+function next() { show(current + 1); }
+function prev() { show(current - 1); }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
+    e.preventDefault(); next();
+  } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+    e.preventDefault(); prev();
+  } else if (e.key === 'Home') { show(0); }
+  else if (e.key === 'End') { show(slides.length - 1); }
+});
+
+show(0);
+</script>
+</body>
+</html>
