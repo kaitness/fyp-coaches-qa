@@ -177,7 +177,7 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
   box-shadow: 0 20px 60px -20px rgba(40,28,18,0.35);
 }
 .coach-portrait img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
 }
 .coach-portrait .initial-fallback {
   width: 100%; height: 100%;
@@ -212,6 +212,15 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
   color: var(--muted);
 }
 .theme-ink .coach-role, .theme-sage-deep .coach-role, .theme-blue-deep .coach-role { color: rgba(255,250,242,0.6); }
+.coach-age-chip {
+  display: inline-block;
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+  font-size: 1.6rem; color: var(--gold-deep);
+  margin-left: 0.8rem; padding: 0.1rem 0.7rem;
+  border-left: 2px solid var(--gold);
+  line-height: 1;
+}
+.theme-ink .coach-age-chip, .theme-sage-deep .coach-age-chip, .theme-blue-deep .coach-age-chip { color: var(--gold); border-left-color: var(--gold); }
 
 .specialty-label {
   font-family: 'Inter', sans-serif; font-size: 0.75rem;
@@ -340,8 +349,8 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
     </div>
     <div class="coach-info">
       <p class="coach-eyebrow">Meet</p>
-      <h2 class="coach-name">Jayme <em>Vainer</em>.</h2>
-      <p class="coach-role">SOD Coach</p>
+      <h2 class="coach-name">Jayme <em>Vainer</em><span class="coach-age-chip">41</span></h2>
+      <p class="coach-role">SOD Coach · May 2022 Alum</p>
       <div>
         <p class="specialty-label">Specialties</p>
         <ul class="specialty-list">
@@ -366,8 +375,8 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
     </div>
     <div class="coach-info">
       <p class="coach-eyebrow">Meet</p>
-      <h2 class="coach-name">Michael <em>Pham</em>.</h2>
-      <p class="coach-role">SOD Coach</p>
+      <h2 class="coach-name">Michael <em>Pham</em><span class="coach-age-chip">36</span></h2>
+      <p class="coach-role">SOD Coach · May 2022 Alum</p>
       <div>
         <p class="specialty-label">Specialties</p>
         <ul class="specialty-list">
@@ -387,21 +396,21 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
   <div class="coach-layout coach c-sage">
     <div class="coach-portrait">
       <span class="number-tag">03 · COACH</span>
-      <div class="initial-fallback bg-sage">A</div>
+      <img src="photos/alana.jpg" alt="Alana Gibson">
     </div>
     <div class="coach-info">
       <p class="coach-eyebrow">Meet</p>
-      <h2 class="coach-name">Alana <em>Gibson</em>.</h2>
+      <h2 class="coach-name">Alana <em>Gibson</em><span class="coach-age-chip">26</span></h2>
       <p class="coach-role">SOD Coach · Director of Growth</p>
       <div>
         <p class="specialty-label">Specialties</p>
         <ul class="specialty-list">
           <li class="specialty-item"><span class="bullet">·</span><em>Godfidence</em> + feminine energy</li>
           <li class="specialty-item"><span class="bullet">·</span>Dating the <em>unexpected</em></li>
-          <li class="specialty-item"><span class="bullet">·</span><em>Extreme</em> long distance</li>
+          <li class="specialty-item"><span class="bullet">·</span><em>Interracial</em> dating</li>
+          <li class="specialty-item"><span class="bullet">·</span>Long distance — including <em>extreme</em></li>
           <li class="specialty-item"><span class="bullet">·</span>Navigating <em>ambivalent</em> attachment</li>
-          <li class="specialty-item"><span class="bullet">·</span>Healthy communication</li>
-          <li class="specialty-item"><span class="bullet">·</span>Emotional regulation in dating</li>
+          <li class="specialty-item"><span class="bullet">·</span>Healthy communication + emotional regulation</li>
         </ul>
       </div>
     </div>
@@ -417,7 +426,7 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
     </div>
     <div class="coach-info">
       <p class="coach-eyebrow">Meet</p>
-      <h2 class="coach-name">Jeremy <em>Fisher</em>.</h2>
+      <h2 class="coach-name">Jeremy <em>Fisher</em><span class="coach-age-chip">38</span></h2>
       <p class="coach-role">SOD Coach · June 2025 Alum</p>
       <div>
         <p class="specialty-label">Specialties</p>
@@ -441,8 +450,8 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
     </div>
     <div class="coach-info">
       <p class="coach-eyebrow">Meet</p>
-      <h2 class="coach-name">Amie <em>Cortes</em>.</h2>
-      <p class="coach-role">SOD Coach</p>
+      <h2 class="coach-name">Amie <em>Cortes</em><span class="coach-age-chip">32</span></h2>
+      <p class="coach-role">SOD Coach · May 2022 Alum</p>
       <div>
         <p class="specialty-label">Specialties</p>
         <ul class="specialty-list">
@@ -466,7 +475,7 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
     </div>
     <div class="coach-info">
       <p class="coach-eyebrow">Meet</p>
-      <h2 class="coach-name">Amanda <em>Sheridan</em>.</h2>
+      <h2 class="coach-name">Amanda <em>Sheridan</em><span class="coach-age-chip">38</span></h2>
       <p class="coach-role">SOD Coach · March 2023 Alum</p>
       <div>
         <p class="specialty-label">Specialties</p>
@@ -482,21 +491,39 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
   </div>
 </section>
 
-<!-- 9. Closing CTA -->
+<!-- 9. Q&A invite -->
 <section class="slide center theme-cream">
   <p class="kicker" style="color:var(--rose-deep)">Your turn</p>
   <h2 class="section" style="margin-top:1rem; max-width:22ch">Drop your <em>questions</em> in the chat.</h2>
   <p class="lede" style="margin-top:2rem; text-align:center; max-width:42ch">Anything you're sitting on. The harder, the better.<br><em>This is the room.</em></p>
-  <div class="cta-card" style="margin-top:3rem">
-    <p class="cta-text">Every single person on this call gets a coach<br>when they join <em>School of Dating</em>.</p>
+</section>
+
+<!-- 10. LAST CALL — $700 off / June cohort / no fall 2027 -->
+<section class="slide center theme-ink">
+  <div class="accent-strip left" style="background:var(--gold)"></div>
+  <div class="accent-strip right" style="background:var(--rose)"></div>
+  <p class="kicker" style="color:var(--gold)">Last call · Tonight only</p>
+  <h2 class="section" style="margin-top:1rem; max-width:24ch">Final night to lock in <em style="color:var(--gold)">$700 off</em>.</h2>
+  <p class="lede" style="margin-top:2.5rem; text-align:center; max-width:48ch">Our <em style="color:var(--gold)">June cohort</em> kicks off next week.<br>After this — we are <em style="color:var(--gold)">not running another cohort</em> until <em style="color:var(--gold)">2027</em>.</p>
+  <div style="margin-top:3rem; display:flex; gap:3rem; justify-content:center; align-items:baseline; padding-bottom:0.5rem; border-bottom:1px solid rgba(200,154,74,0.3); padding-bottom:1.5rem">
+    <div style="text-align:center">
+      <div style="font-family:'Inter',sans-serif; font-size:0.78rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,250,242,0.7); font-weight:600">Pay in Full</div>
+      <div style="font-family:'Fraunces',serif; font-size:3.2rem; font-weight:300; color:var(--paper); margin-top:0.4rem">$997</div>
+    </div>
+    <div style="font-family:'Fraunces',serif; font-style:italic; color:rgba(255,250,242,0.4); font-size:1.6rem; align-self:center">or</div>
+    <div style="text-align:center">
+      <div style="font-family:'Inter',sans-serif; font-size:0.78rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,250,242,0.7); font-weight:600">Payment Plan</div>
+      <div style="font-family:'Fraunces',serif; font-size:3.2rem; font-weight:300; color:var(--paper); margin-top:0.4rem">6 × $198</div>
+    </div>
   </div>
+  <p style="margin-top:2.5rem; font-family:'Fraunces',serif; font-weight:400; font-size:clamp(2.2rem, 3vw, 3rem); color:var(--gold); letter-spacing:-0.01em; text-align:center; font-style:italic">schoolofdatingoffer.com</p>
 </section>
 
 </div>
 
 <button class="nav-arrow prev" id="prevBtn" onclick="prev()">‹</button>
 <button class="nav-arrow next" id="nextBtn" onclick="next()">›</button>
-<div class="slide-counter" id="counter">1 · 9</div>
+<div class="slide-counter" id="counter">1 · 10</div>
 
 <script>
 const slides = document.querySelectorAll('.slide');
