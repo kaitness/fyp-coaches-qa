@@ -285,6 +285,28 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
 .initial-fallback.bg-blue { background: var(--blue-soft); color: var(--blue-deep); }
 .initial-fallback.bg-gold { background: var(--cream); color: var(--gold-deep); }
 
+/* MEET THE TEAM grid */
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 2.5rem; margin-top: 2rem; max-width: 1350px;
+  margin-left: auto; margin-right: auto;
+}
+.team-card { text-align: center; }
+.team-portrait {
+  width: 100%; aspect-ratio: 4/5; border-radius: 6px;
+  overflow: hidden; box-shadow: 0 12px 35px -12px rgba(40,28,18,0.3);
+}
+.team-portrait img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
+}
+.team-name {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: 1.55rem; color: var(--ink); margin-top: 0.9rem;
+  letter-spacing: -0.01em;
+}
+.team-name em { font-style: italic; color: var(--gold-deep); }
+
 /* CLOSING / CTA */
 .cta-card {
   background: var(--paper); border: 3px solid var(--gold); border-radius: 8px;
@@ -493,7 +515,41 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
   </div>
 </section>
 
-<!-- 9. Q&A invite -->
+<!-- 9. Meet the Team recap -->
+<section class="slide theme-cream">
+  <div style="text-align:center">
+    <p class="kicker" style="color:var(--gold-deep)">The full roster · Bonus Night</p>
+    <h2 class="section" style="margin-top:0.6rem">Meet the <em>team</em>.</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-portrait"><img src="photos/jayme.jpg" alt="Jayme Vainer"></div>
+      <div class="team-name">Jayme <em>Vainer</em></div>
+    </div>
+    <div class="team-card">
+      <div class="team-portrait"><img src="photos/michael.jpg" alt="Michael Pham"></div>
+      <div class="team-name">Michael <em>Pham</em></div>
+    </div>
+    <div class="team-card">
+      <div class="team-portrait"><img src="photos/alana.jpg" alt="Alana Gibson"></div>
+      <div class="team-name">Alana <em>Gibson</em></div>
+    </div>
+    <div class="team-card">
+      <div class="team-portrait"><img src="photos/jeremy.jpg" alt="Jeremy Fisher"></div>
+      <div class="team-name">Jeremy <em>Fisher</em></div>
+    </div>
+    <div class="team-card">
+      <div class="team-portrait"><img src="photos/amie.jpg" alt="Amie Cortes"></div>
+      <div class="team-name">Amie <em>Cortes</em></div>
+    </div>
+    <div class="team-card">
+      <div class="team-portrait"><img src="photos/amanda.jpg" alt="Amanda Sheridan"></div>
+      <div class="team-name">Amanda <em>Sheridan</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Q&A invite -->
 <section class="slide center theme-cream">
   <p class="kicker" style="color:var(--rose-deep)">Your turn</p>
   <h2 class="section" style="margin-top:1rem; max-width:22ch">Drop your <em>questions</em> in the chat.</h2>
@@ -547,7 +603,7 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
 
 <button class="nav-arrow prev" id="prevBtn" onclick="prev()">‹</button>
 <button class="nav-arrow next" id="nextBtn" onclick="next()">›</button>
-<div class="slide-counter" id="counter">1 · 10</div>
+<div class="slide-counter" id="counter">1 · 11</div>
 
 <script>
 const slides = document.querySelectorAll('.slide');
