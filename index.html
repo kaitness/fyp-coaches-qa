@@ -288,13 +288,14 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
 /* MEET THE TEAM grid */
 .team-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 2rem 2.5rem; margin-top: 2rem; max-width: 1350px;
+  gap: 1.2rem 2rem; margin-top: 1.5rem; max-width: 1200px;
   margin-left: auto; margin-right: auto;
 }
 .team-card { text-align: center; }
 .team-portrait {
   width: 100%; aspect-ratio: 4/5; border-radius: 6px;
-  overflow: hidden; box-shadow: 0 12px 35px -12px rgba(40,28,18,0.3);
+  overflow: hidden; box-shadow: 0 10px 28px -12px rgba(40,28,18,0.3);
+  max-height: 280px;
 }
 .team-portrait img {
   width: 100%; height: 100%; object-fit: cover; object-position: center top;
@@ -302,7 +303,7 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
 }
 .team-name {
   font-family: 'Fraunces', serif; font-weight: 400;
-  font-size: 1.55rem; color: var(--ink); margin-top: 0.9rem;
+  font-size: 1.3rem; color: var(--ink); margin-top: 0.6rem;
   letter-spacing: -0.01em;
 }
 .team-name em { font-style: italic; color: var(--gold-deep); }
@@ -516,12 +517,12 @@ h2.section em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
 </section>
 
 <!-- 9. Meet the Team recap -->
-<section class="slide theme-cream">
+<section class="slide theme-cream" style="padding:4vh 7vw">
   <div style="text-align:center">
     <p class="kicker" style="color:var(--gold-deep)">The full roster · Bonus Night</p>
-    <h2 class="section" style="margin-top:0.6rem">Meet the <em>SOD team</em>.</h2>
+    <h2 class="section" style="margin-top:0.4rem; font-size:clamp(2.4rem, 3.6vw, 3.6rem)">Meet the <em>SOD team</em>.</h2>
   </div>
-  <div class="team-grid">
+  <div class="team-grid" style="margin-top:1.5rem; gap:1.2rem 2rem">
     <div class="team-card">
       <div class="team-portrait"><img src="photos/jayme.jpg" alt="Jayme Vainer"></div>
       <div class="team-name">Jayme <em>Vainer</em></div>
